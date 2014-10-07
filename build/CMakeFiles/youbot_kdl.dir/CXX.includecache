@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/data/dataDeebul/MAS_sem2/robotmanipulation/Assignment01/youbot_kdl/src/main.cpp
+iostream
+-
+stdio.h
+-
+vector
+-
+signal.h
+-
+stdio.h
+-
+unistd.h
+-
+termios.h
+-
+boost/ptr_container/ptr_vector.hpp
+-
+youbot/YouBotBase.hpp
+/data/dataDeebul/MAS_sem2/robotmanipulation/Assignment01/youbot_kdl/src/youbot/YouBotBase.hpp
+youbot/YouBotManipulator.hpp
+/data/dataDeebul/MAS_sem2/robotmanipulation/Assignment01/youbot_kdl/src/youbot/YouBotManipulator.hpp
+youbot/DataTrace.hpp
+/data/dataDeebul/MAS_sem2/robotmanipulation/Assignment01/youbot_kdl/src/youbot/DataTrace.hpp
+
