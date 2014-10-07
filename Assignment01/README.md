@@ -2,26 +2,26 @@ Solution
 =======
 
 
-1. Read Frames Chapter from Craig's book and present a mind map.
+### Read Frames Chapter from Craig's book and present a mind map.
 ![Craigs](Manipulator.jpeg)
-2. Understanding of youbot_driver :
-    2.1 Present an overview of the youbot_driver. (Preferably as class diagram,
+### Understanding of youbot_driver :
+####2.1 Present an overview of the youbot_driver. (Preferably as class diagram,
 do not detail the member functions).
         ![UML](YouBotManipulatorUML.pdf)
-    2.2. Currently the home position of the robot is calibrated to folded arm.
+####2.2. Currently the home position of the robot is calibrated to folded arm.
 Change the home position to candle position.
              The candle position of the arm can be found in the shared
 youbot_kdl folder. (hint : setencoders to zero)
          You also need to modify the joint limits in the configuration file.
          Joint limits for candle position can be found in :
          http://www.youbot-store.com/youbot-developers/software/simulation/kuka-youbot-kinematics-dynamics-and-3d-model
-    2.3. Write a program which controls first three joints in position mode and
+####2.3. Write a program which controls first three joints in position mode and
 the last two in velocity mode.
         Solution : [Implemented Here !](code/src/main.cpp)
-    2.4. Understand the working of kdl library and provide an interface from
+####2.4. Understand the working of kdl library and provide an interface from
 kdl to youbot.
         Solution : [Implemented Here !](code/src/mainInterface.cpp)
-3. What is cascaded controller ? Term some advantages of using a cascaded
+### What is cascaded controller ? Term some advantages of using a cascaded
    controller.
 
     A cascade control system is a multiple-loop system where the primary
@@ -40,6 +40,6 @@ The advantages of cascade control are as follows:
     6.Improve dynamic performance
 
 Reference :http://www.sapiensman.com/control/
-4. Provide a theoretical method of modelling a motor as a spring. (You need to
+### Provide a theoretical method of modelling a motor as a spring. (You need to
    program it in the next assignment)
 
