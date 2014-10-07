@@ -6,7 +6,7 @@ Solution
 ![Craigs](Manipulator.jpeg)
 ### Understanding of youbot_driver :
 ####2.1 Present an overview of the youbot_driver. (Preferably as class diagram,do not detail the member functions).
-        ![UML](YouBotManipulatorUML.png)
+![UML](YouBotManipulatorUML.png)
 ####2.2. Currently the home position of the robot is calibrated to folded arm.Change the home position to candle position.
              The candle position of the arm can be found in the shared
 youbot_kdl folder. (hint : setencoders to zero)
