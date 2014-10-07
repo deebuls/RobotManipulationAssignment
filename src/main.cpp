@@ -41,6 +41,7 @@ int main( int argc, const char* argv[] ){
 	char keyboardInput = '0';
 	int readValue = 0;
 	JointAngles.resize(5);	
+	JointVelocities.resize(5);
 
 	for(int i = 0; i < numberOfArmJoints; i++)
 	{
@@ -66,7 +67,7 @@ int main( int argc, const char* argv[] ){
 	jointSetAngle[2].angle =-2.43523* radian;
 	jointSetAngle[3].angle = 1.73184  * radian;
 	jointSetAngle[4].angle =  2.91062 * radian;
-	youBotArm->setJointData(jointSetAngle);
+//	youBotArm->setJointData(jointSetAngle);
 	SLEEP_SEC(5);
 	youbot::JointSensedAngle angle;
 	youbot::JointSensedVelocity vel;	
@@ -98,9 +99,17 @@ int main( int argc, const char* argv[] ){
 			
 			
 			keyboardInput = getch();
+			
+			//std::vector<youbot::JointSensedVelocity> jointSensedVel;
+			//jointSensedVel.resize(5);
+			//youBotArm->getJointData(jointSensedVel);
+			
 			for(std::size_t i=0;i<5;i++){
 				youBotArm->getArmJoint(i+1).getData(angle);
 				JointAngles[i] = (double)angle.angle.value();
+				youBotArm->getArmJoint(i+1).getData(vel);
+				cout <<" Angles "<<i<<JointAngles[i]<<endl;
+
 			}
 			
 			//////////////////////////////////////////////////////////////////////////////
@@ -110,7 +119,10 @@ int main( int argc, const char* argv[] ){
 			for(std::size_t i=0;i<5;i++){
 				youBotArm->getArmJoint(i+1).getData(vel);
 				JointVelocities[i] = (double)vel.angularVelocity.value();
+				cout <<" Vel "<<i<<(double)vel.angularVelocity.value()<<endl;
 			}
+			
+			
 			if (keyboardInput == 'w'){
 				
 				if((readValue >= 1)&&(readValue <= 3))
@@ -119,7 +131,7 @@ int main( int argc, const char* argv[] ){
 					///Updating angles of Joints 1 to 3
 					//////////////////////////////////////////////////////////////		
 					JointAngles[readValue - 1] += jointDelta[readValue - 1];
-				} else if ((readValue >= 1)&&(readValue <= 3))
+				} else if ((readValue >= 4)&&(readValue <= 5))
 				{
 					//////////////////////////////////////////////////////////////
 					///Updating velocity of Joints 4 to 5
@@ -136,7 +148,7 @@ int main( int argc, const char* argv[] ){
 					///Updating angles of Joints 1 to 3	
 					//////////////////////////////////////////////////////////////		
 					JointAngles[readValue - 1] -= jointDelta[readValue - 1];
-				} else if ((readValue >= 1)&&(readValue <= 3))
+				} else if ((readValue >= 4)&&(readValue <= 5))
 				{
 					//////////////////////////////////////////////////////////////
 					///Updating velocity of Joints 4 to 5
@@ -170,7 +182,7 @@ int main( int argc, const char* argv[] ){
 					if((readValue >= 1)&&(readValue <= 3))
 					{		
 						youBotArm->getArmJoint(i+1).setData(jointSetAngle[i]);
-					} else if ((readValue >= 1)&&(readValue <= 3))
+					} else if ((readValue >= 4)&&(readValue <= 5))
 					{
 						youBotArm->getArmJoint(i+1).setData(jointSetVel[i]);
 					}
