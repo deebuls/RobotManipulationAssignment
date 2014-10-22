@@ -23,15 +23,31 @@ int main( int argc, const char* argv[] ){
 
     //Assigning to candle position
 	 jointpositions(0) = (double) 2.96244 ;
-	 jointpositions(1)= (double)1.04883 ;
-	 jointpositions(2)=(double)-2.43523;
-	 jointpositions(3)= (double)1.73184 ;
-	 jointpositions(4)=  (double)2.91062;
+	 jointpositions(1) = (double)1.04883 ;
+	 jointpositions(2) = (double)-2.43523;
+	 jointpositions(3) = (double)1.73184 ;
+	 jointpositions(4) = (double)2.91062;
     
     
     youBotArm->setJointData(jointpositions);	
 
     SLEEP_SEC(5);
+    
+    
+    KDL::JntArray readJointValues = JntArray(5);
+    youBotArm->getJointCurrent(readJointValues);
+    cout<<"Current : "<<readJointValues(0);
+    
+    youBotArm->getJointCurrent(readJointValues);
+    cout<<"Current : "<<readJointValues(0);
+    
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(0);
+    
+    youBotArm->getJointVelocity(readJointValues);
+    cout<<"Velocity : "<<readJointValues(0);    
+    
+    
     return 0;
 
 }
