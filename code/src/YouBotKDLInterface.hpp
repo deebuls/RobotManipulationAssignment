@@ -30,7 +30,18 @@ class YouBotKDLInterface : public YouBotManipulator
 		///commands positions or angles to all manipulator joints
 		///all positions will be set at the same time
 		///@param JointData the to command positions
-		virtual void setJointData(const KDL::JntArray& JointData);
+		virtual void setJointPosition(const KDL::JntArray& JointData);
+
+		///commands positions or angles to all manipulator joints
+		///all positions will be set at the same time
+		///@param JointData the to command positions
+		virtual void setJointCurrent(const KDL::JntArray& JointData);
+
+		///commands positions or angles to all manipulator joints
+		///all positions will be set at the same time
+		///@param JointData the to command positions
+		virtual void setJointVelocity(const KDL::JntArray& JointData);
+
 
 		///reads Current of all manipulator joints
 		///@param data returns the current per joint

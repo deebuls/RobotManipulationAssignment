@@ -13,7 +13,7 @@
 #include "YouBotKDLInterface.hpp"
 
 using namespace KDL;
-
+using namespace youbot;
 int main( int argc, const char* argv[] ){
 	YouBotKDLInterface *youBotArm;
     youBotArm = new YouBotKDLInterface("youbot-manipulator");
@@ -29,7 +29,7 @@ int main( int argc, const char* argv[] ){
 	 jointpositions(4) = (double)2.91062;
     
     
-    youBotArm->setJointData(jointpositions);	
+    youBotArm->setJointPosition(jointpositions);	
 
     SLEEP_SEC(5);
     
@@ -47,7 +47,8 @@ int main( int argc, const char* argv[] ){
     youBotArm->getJointVelocity(readJointValues);
     cout<<"Velocity : "<<readJointValues(0);    
     
-    
+
+
     return 0;
 
 }
