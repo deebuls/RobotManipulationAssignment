@@ -55,6 +55,24 @@ class YouBotKDLInterface : public YouBotManipulator
 		///@param data returns the Velocity per joint
 		virtual void getJointVelocity(KDL::JntArray& data);
 		
-	
+    private:
+        KDL::Frame arm_base_frame;
+
+        KDL::Joint joint_1;
+        KDL::Frame frame_1;
+
+        KDL::Joint joint_2;
+        KDL::Frame frame_2;
+
+        KDL::Joint joint_3;
+        KDL::Frame frame_3;
+
+        KDL::Joint joint_4;
+        KDL::Frame frame_4;
+
+        KDL::Joint joint_5;
+        KDL::Frame frame_5;
+
+        KDL::Frame end_factor;
 
 };

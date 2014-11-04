@@ -3,6 +3,29 @@
 YouBotKDLInterface::YouBotKDLInterface(const std::string name)
 			: YouBotManipulator(name)
 {
+    //Base frame 
+    arm_base_frame = KDL::Frame(KDL::Vector(0.0, 0.0, 0.0));
+
+    //Frame 1 and Joint 1
+    joint_1 = KDL::Joint(KDL::Joint::RotZ);
+    frame_1 = KDL::Frame(KDL::Vector(0.024, 0.0, 115.0));
+
+    //Frame 2 and Joint 2
+    joint_2 = KDL::Joint( KDL::Joint::RotY);
+    frame_2 = KDL::Frame(KDL::Vector(0.033, 0.0, 0.019));
+    //Frame 3 and Joint 3
+    joint_3 = KDL::Joint(KDL::Joint::RotY);
+    frame_3 = KDL::Frame(KDL::Vector(0.0, 0.0, 0.155));
+    //Frame 4 and Joint 4
+    joint_4 = KDL::Joint(KDL::Joint::RotY);
+    frame_4 = KDL::Frame(KDL::Vector(0.0, 0.0, 0.135));
+    //Frame 5 and Joint 5
+    joint_5 = KDL::Joint(KDL::Joint::RotZ);
+    frame_5 = KDL::Frame(KDL::Vector(-0.002, 0.0, 0.130));
+
+    //Frame 6
+    end_factor = KDL::Frame(KDL::Vector(0.0, 0.0, 90));
+
 
 }
 
