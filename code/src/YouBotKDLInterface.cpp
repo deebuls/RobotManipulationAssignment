@@ -26,7 +26,17 @@ YouBotKDLInterface::YouBotKDLInterface(const std::string name)
     //Frame 6
     end_factor = KDL::Frame(KDL::Vector(0.0, 0.0, 90));
 
+    //Adding the chain
+    chain.addSegment(KDL::Segment(KDL::Joint(), arm_base_frame));
+    chain.addSegment(KDL::Segment(joint_1,frame_1));
+    chain.addSegment(KDL::Segment(joint_2,frame_2));
+    chain.addSegment(KDL::Segment(joint_3,frame_3));
+    chain.addSegment(KDL::Segment(joint_4,frame_4));
+    chain.addSegment(KDL::Segment(joint_5,frame_5));
+    chain.addSegment(KDL::Segment(KDL::Joint(),end_factor));
 
+    //Defining the solver
+//    fksolver = KDL::ChainFkSolverPos_recursive(chain);
 }
 
 YouBotKDLInterface::~YouBotKDLInterface()
@@ -144,4 +154,15 @@ void YouBotKDLInterface::getJointVelocity(KDL::JntArray& data)
 	data(3) = (double) jointSensedVelocity[3].angularVelocity.value();
 	data(4) = (double) jointSensedVelocity[4].angularVelocity.value();
 	
+}
+
+///reads manipulator joints
+///@param Inputs the joint angles 
+///@return The position of  the endfactor
+void YouBotKDLInterface::getEndFactorPose(KDL::JntArray& iData, KDL::Frame& oPose)
+{
+    bool kinematic_status;
+    KDL::ChainFkSolverPos_recursive fksolver = KDL::ChainFkSolverPos_recursive(chain) ;
+    kinematic_status = fksolver.JntToCart(iData, oPose);
+
 }

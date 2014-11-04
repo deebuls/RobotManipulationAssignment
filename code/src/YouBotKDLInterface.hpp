@@ -55,6 +55,7 @@ class YouBotKDLInterface : public YouBotManipulator
 		///@param data returns the Velocity per joint
 		virtual void getJointVelocity(KDL::JntArray& data);
 		
+        void getEndFactorPose(KDL::JntArray& iData, KDL::Frame& oPose);
     private:
         KDL::Frame arm_base_frame;
 
@@ -74,5 +75,8 @@ class YouBotKDLInterface : public YouBotManipulator
         KDL::Frame frame_5;
 
         KDL::Frame end_factor;
+        
+        KDL::Chain chain;
 
+//        KDL::ChainFkSolverPos_recursive fksolver ;
 };

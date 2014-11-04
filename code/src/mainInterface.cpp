@@ -47,8 +47,9 @@ int main( int argc, const char* argv[] ){
     youBotArm->getJointVelocity(readJointValues);
     cout<<"Velocity : "<<readJointValues(0);    
     
-
-
+    KDL::Frame endfactorframe;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe;
     return 0;
 
 }
