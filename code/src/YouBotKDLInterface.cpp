@@ -3,37 +3,50 @@
 YouBotKDLInterface::YouBotKDLInterface(const std::string name)
 			: YouBotManipulator(name)
 {
+
+    double offset[5] = {
+        (-169 * M_PI/180),
+        (-65 * M_PI/180),
+        (151 * M_PI/180),
+        (-102.5 * M_PI/180),
+        (-165 * M_PI/180)
+    };
+
     //Base frame 
-    arm_base_frame = KDL::Frame(KDL::Vector(0.0, 0.0, 0.0));
+    arm_base_frame = KDL::Frame::DH(0.0, M_PI, 0.147, 0.0);
 
     //Frame 1 and Joint 1
     joint_1 = KDL::Joint(KDL::Joint::RotZ);
-    frame_1 = KDL::Frame(KDL::Vector(0.024, 0.0, 115.0));
+    frame_1 = KDL::Frame::DH(0.033, +M_PI_2, 0.000, offset[0]+M_PI);
 
     //Frame 2 and Joint 2
-    joint_2 = KDL::Joint( KDL::Joint::RotY);
-    frame_2 = KDL::Frame(KDL::Vector(0.033, 0.0, 0.019));
+    joint_2 = KDL::Joint( KDL::Joint::RotZ);
+    frame_2 = KDL::Frame::DH(0.155, 0, 0.000, offset[1]-M_PI_2);
+
     //Frame 3 and Joint 3
-    joint_3 = KDL::Joint(KDL::Joint::RotY);
-    frame_3 = KDL::Frame(KDL::Vector(0.0, 0.0, 0.155));
+    joint_3 = KDL::Joint(KDL::Joint::RotZ);
+    frame_3 =  KDL::Frame::DH(0.135, 0, 0.000, offset[2]);
+
     //Frame 4 and Joint 4
-    joint_4 = KDL::Joint(KDL::Joint::RotY);
-    frame_4 = KDL::Frame(KDL::Vector(0.0, 0.0, 0.135));
+    joint_4 = KDL::Joint(KDL::Joint::RotZ);
+    frame_4 =  KDL::Frame::DH(0.0, 0, 0.000, offset[3]);
+
     //Frame 5 and Joint 5
     joint_5 = KDL::Joint(KDL::Joint::RotZ);
-    frame_5 = KDL::Frame(KDL::Vector(-0.002, 0.0, 0.130));
+    frame_5 =  KDL::Frame::DH(0.0, -M_PI_2, 0.000, offset[4]+M_PI_2);
+
 
     //Frame 6
-    end_factor = KDL::Frame(KDL::Vector(0.0, 0.0, 90));
+    end_factor = KDL::Frame::DH(0.0, 0, -0.218, 0);
 
     //Adding the chain
-    chain.addSegment(KDL::Segment(KDL::Joint(), arm_base_frame));
+    chain.addSegment(KDL::Segment(KDL::Joint(KDL::Joint::None), arm_base_frame));
     chain.addSegment(KDL::Segment(joint_1,frame_1));
     chain.addSegment(KDL::Segment(joint_2,frame_2));
     chain.addSegment(KDL::Segment(joint_3,frame_3));
     chain.addSegment(KDL::Segment(joint_4,frame_4));
     chain.addSegment(KDL::Segment(joint_5,frame_5));
-    chain.addSegment(KDL::Segment(KDL::Joint(),end_factor));
+    chain.addSegment(KDL::Segment(KDL::Joint(KDL::Joint::None), end_factor));
 
     //Defining the solver
 //    fksolver = KDL::ChainFkSolverPos_recursive(chain);
