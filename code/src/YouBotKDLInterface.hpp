@@ -15,7 +15,7 @@ using namespace youbot;
 
 #define ARMJOINTS 5
 
-class YouBotKDLInterface : public YouBotManipulator
+class YouBotKDLInterface
 {
 	public:
 	
@@ -57,6 +57,9 @@ class YouBotKDLInterface : public YouBotManipulator
 		
         void getEndFactorPose(KDL::JntArray& iData, KDL::Frame& oPose);
     private:
+        YouBotManipulator* youBotManipulator;
+        std::vector<youbot::JointAngleSetpoint> jointSetAngle;
+        
         KDL::Frame arm_base_frame;
 
         KDL::Joint joint_1;

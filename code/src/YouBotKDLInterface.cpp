@@ -1,8 +1,8 @@
 #include "YouBotKDLInterface.hpp"
 
 YouBotKDLInterface::YouBotKDLInterface(const std::string name)
-			: YouBotManipulator(name)
 {
+    youBotManipulator = new YouBotManipulator(name);
 
     double offset[5] = {
         (-169 * M_PI/180),
@@ -59,8 +59,8 @@ YouBotKDLInterface::~YouBotKDLInterface()
 void YouBotKDLInterface::doInitialize()
 {
 
-    YouBotManipulator::doJointCommutation();
-    YouBotManipulator::calibrateManipulator();
+    youBotManipulator->doJointCommutation();
+    youBotManipulator->calibrateManipulator();
 
 }
 
@@ -75,7 +75,7 @@ void YouBotKDLInterface::setJointPosition(const KDL::JntArray& JointData)
 	jointSetAngle[3].angle = JointData(3) * radian;
 	jointSetAngle[4].angle = JointData(4) * radian;
 
-	YouBotManipulator::setJointData(jointSetAngle);
+	youBotManipulator->setJointData(jointSetAngle);
 }
 
 
@@ -94,7 +94,7 @@ void YouBotKDLInterface::setJointVelocity(const KDL::JntArray& JointData)
 	jointSetVelocity[3].angularVelocity = JointData(3) * radian_per_second;
 	jointSetVelocity[4].angularVelocity = JointData(4) * radian_per_second;
 
-	YouBotManipulator::setJointData(jointSetVelocity);
+	youBotManipulator->setJointData(jointSetVelocity);
 }
     
 
@@ -114,7 +114,7 @@ void YouBotKDLInterface::setJointCurrent(const KDL::JntArray& JointData)
 	jointSetCurrent[3].current = JointData(3) * si::ampere;
 	jointSetCurrent[4].current = JointData(4) * si::ampere;
 
-	YouBotManipulator::setJointData(jointSetCurrent);
+	youBotManipulator->setJointData(jointSetCurrent);
 }
 
 
@@ -125,7 +125,7 @@ void YouBotKDLInterface::getJointCurrent(KDL::JntArray& data)
     data.resize(ARMJOINTS);
 	std::vector<youbot::JointSensedCurrent> jointSensedCurrent;
 	jointSensedCurrent.resize(ARMJOINTS);  
-	YouBotManipulator::getJointData(jointSensedCurrent);
+	youBotManipulator->getJointData(jointSensedCurrent);
 	
 	data(0) = (double) jointSensedCurrent[0].current.value();
 	data(1) = (double) jointSensedCurrent[1].current.value();
@@ -142,7 +142,7 @@ void YouBotKDLInterface::getJointPosition(KDL::JntArray& data)
     data.resize(ARMJOINTS);
 	std::vector<youbot::JointSensedAngle> jointSensedAngle;
 	jointSensedAngle.resize(ARMJOINTS);  
-	YouBotManipulator::getJointData(jointSensedAngle);
+	youBotManipulator->getJointData(jointSensedAngle);
 	
 	data(0) = (double) jointSensedAngle[0].angle.value();
 	data(1) = (double) jointSensedAngle[1].angle.value();
@@ -159,7 +159,7 @@ void YouBotKDLInterface::getJointVelocity(KDL::JntArray& data)
     data.resize(ARMJOINTS);
 	std::vector<youbot::JointSensedVelocity> jointSensedVelocity;
 	jointSensedVelocity.resize(ARMJOINTS);  
-	YouBotManipulator::getJointData(jointSensedVelocity);
+	youBotManipulator->getJointData(jointSensedVelocity);
 	
 	data(0) = (double) jointSensedVelocity[0].angularVelocity.value();
 	data(1) = (double) jointSensedVelocity[1].angularVelocity.value();

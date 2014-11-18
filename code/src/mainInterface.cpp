@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <termios.h>
+#include <math.h>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include "youbot/YouBotBase.hpp"
 #include "youbot/YouBotManipulator.hpp"
@@ -50,6 +51,95 @@ int main( int argc, const char* argv[] ){
     KDL::Frame endfactorframe;
     youBotArm->getEndFactorPose(jointpositions, endfactorframe);
     cout<<"Frame end factor"<<endfactorframe;
+
+    SLEEP_SEC(5);
+    int i; 
+	jointpositions(4) = jointpositions(4) + M_PI/2;
+   
+    cout<<"------rotation +ve ---------"<<std::endl;
+    cout<<"Rotation Joint 4 to :"<<jointpositions(4)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(4)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+	jointpositions(4) = jointpositions(4) - M_PI/4;
+   
+    cout<<"------rotation -ve ---------"<<std::endl;
+    cout<<"Rotation Joint 4 to :"<<jointpositions(4)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(4)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+	jointpositions(2) = jointpositions(2) + M_PI/2;
+   
+    cout<<"------rotation +ve ---------"<<std::endl;
+    cout<<"Rotation Joint 2 to :"<<jointpositions(2)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(2)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+	jointpositions(2) = jointpositions(2) - M_PI/4;
+   
+    cout<<"------rotation -ve ---------"<<std::endl;
+    cout<<"Rotation Joint 2 to :"<<jointpositions(2)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(2)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+	jointpositions(3) = jointpositions(3) + M_PI/2;
+   
+    cout<<"------rotation +ve ---------"<<std::endl;
+    cout<<"Rotation Joint 3 to :"<<jointpositions(3)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(3)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+	jointpositions(3) = jointpositions(3) - M_PI/4;
+   
+    cout<<"------rotation -ve ---------"<<std::endl;
+    cout<<"Rotation Joint 3 to :"<<jointpositions(3)<<std::endl;
+
+    youBotArm->setJointPosition(jointpositions);	
+    SLEEP_SEC(5);
+    youBotArm->getJointPosition(readJointValues);
+    cout<<"Position : "<<readJointValues(3)<<std::endl;
+    youBotArm->getEndFactorPose(jointpositions, endfactorframe);
+    cout<<"Frame end factor"<<endfactorframe<<std::endl;
+    cout<<"Please enter for next Test"<<std::endl;
+    cin>>i;
+
+
+
     return 0;
 
 }
