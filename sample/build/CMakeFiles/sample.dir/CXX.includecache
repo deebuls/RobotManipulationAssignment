@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/data/dataDeebul/MAS_sem2/robotmanipulation/RobotManipulationAssignment/sample/fwdKinematicsYouBot.cpp
+kdl/chain.hpp
+-
+kdl/chainfksolver.hpp
+-
+kdl/chainfksolverpos_recursive.hpp
+-
+kdl/frames_io.hpp
+-
+stdio.h
+-
+iostream
+-
+

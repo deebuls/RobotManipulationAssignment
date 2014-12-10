@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/sample.dir/fwdKinematicsYouBot.cpp.o  -o ../bin/sample -rdynamic -Wl,-Bstatic -lboost_thread-mt -Wl,-Bdynamic -lpthread -Wl,-Bstatic -lboost_date_time-mt -lboost_filesystem-mt -lboost_system-mt -Wl,-Bdynamic -lorocos-kdl -lpthread -Wl,-Bstatic -lboost_date_time-mt -lboost_filesystem-mt -lboost_system-mt -Wl,-Bdynamic -lorocos-kdl 
